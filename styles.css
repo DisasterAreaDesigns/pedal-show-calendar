@@ -6,6 +6,8 @@
   --accent: #d2481f;
   --on-accent: #ffffff;
   --border: #e3ded3;
+  --ok: #2f7d3a;
+  --error: #c0262d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +18,8 @@
     --muted: #a39d90;
     --accent: #ff7a4d;
     --on-accent: #15140f;
+    --ok: #6fcf7f;
+    --error: #ff6b6b;
     --border: #34312a;
   }
 }
@@ -110,25 +114,73 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .back { margin: 0 0 8px; font-size: 0.9rem; }
 .back a { text-decoration: none; }
 
-.contact-form { display: grid; gap: 16px; margin-bottom: 48px; }
-.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: 0.9rem; }
+.contact-form { display: grid; gap: 24px; margin-bottom: 48px; }
 
+.contact-form fieldset {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.contact-form legend {
+  padding: 0 6px;
+  margin-left: -6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-weight: 600; font-size: 0.9rem; }
+.optional { font-weight: 400; color: var(--muted); }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+
+/* Strip Safari's native control styling so fields look the same everywhere. */
 .contact-form input,
 .contact-form textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: 44px;
   padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--surface);
+  background: var(--bg);
   color: var(--text);
   font: inherit;
-  font-weight: 400;
+  color-scheme: light dark;
 }
 
-.contact-form textarea { resize: vertical; }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: var(--muted); opacity: 0.7; }
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.contact-form.show-errors input:invalid,
+.contact-form.show-errors textarea:invalid { border-color: var(--error); }
+
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
 
 .contact-form button {
-  justify-self: start;
-  padding: 10px 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 12px 28px;
   border: 0;
   border-radius: 8px;
   background: var(--accent);
@@ -138,11 +190,11 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: 
   cursor: pointer;
 }
 
-.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.contact-form button:hover { filter: brightness(1.08); }
+.contact-form button:disabled { opacity: 0.6; cursor: progress; }
 
-.notice {
-  padding: 12px 16px;
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  background: var(--surface);
-}
+.form-status { margin: 0; color: var(--muted); }
+.form-status[data-kind="ok"] { color: var(--ok); }
+.form-status[data-kind="error"] { color: var(--error); }
+
+.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

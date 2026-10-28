@@ -3,56 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact · Pedal Show Calendar</title>
-  <meta name="description" content="Send a show listing, correction or question to Pedal Show Calendar.">
-  <link rel="stylesheet" href="styles.css">
+  <title>Submit a Show · Pedal Show Calendar</title>
+  <meta name="description" content="Send a pedal show listing or correction to Pedal Show Calendar.">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="site-header">
     <p class="back"><a href="./">← All shows</a></p>
-    <h1>Contact</h1>
-    <p class="tagline">Know a show we're missing, or spotted a mistake? Let us know.</p>
+    <h1>Submit a show</h1>
+    <p class="tagline">Know a show we're missing, or spotted a mistake? Send it over.</p>
   </header>
 
   <main>
-    <p class="notice" id="sent-notice" hidden>Thanks — your message was sent.</p>
-
-    <!-- Messages are relayed by FormSubmit (formsubmit.co), which adds a CAPTCHA
-         and its own spam filtering on top of the honeypot field below. -->
-    <form class="contact-form" action="https://formsubmit.co/919pedalparty@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Pedal Show Calendar contact form">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" id="next-url">
-
+    <!-- Messages are relayed by FormSubmit (formsubmit.co). Spam is screened by
+         FormSubmit's filter plus the honeypot and timing checks in the script below. -->
+    <form class="contact-form" id="contact-form" novalidate>
       <!-- Honeypot: hidden from people, bots fill it in and get discarded. -->
-      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="honeypot" aria-hidden="true">
+        <label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+      </div>
 
-      <label>
-        Name
-        <input type="text" name="name" required maxlength="100" autocomplete="name">
-      </label>
+      <fieldset>
+        <legend>The show</legend>
 
-      <label>
-        Email
-        <input type="email" name="email" required maxlength="200" autocomplete="email">
-      </label>
+        <div class="field">
+          <label for="event-name">Event name</label>
+          <input id="event-name" name="event_name" type="text" required maxlength="150">
+        </div>
 
-      <label>
-        Message
-        <textarea name="message" required rows="6" maxlength="5000"
-          placeholder="Show name, dates, city, venue and a link are the most helpful."></textarea>
-      </label>
+        <div class="field-row">
+          <div class="field">
+            <label for="event-start">Date</label>
+            <input id="event-start" name="event_start" type="date" required>
+          </div>
+          <div class="field">
+            <label for="event-end">End date <span class="optional">optional</span></label>
+            <input id="event-end" name="event_end" type="date">
+          </div>
+        </div>
 
-      <button type="submit">Send message</button>
+        <div class="field">
+          <label for="event-location">Location</label>
+          <input id="event-location" name="event_location" type="text" required maxlength="200"
+            placeholder="Venue, city, state">
+        </div>
+
+        <div class="field">
+          <label for="event-url">Website <span class="optional">optional</span></label>
+          <input id="event-url" name="event_url" type="url" maxlength="300" placeholder="https://">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>You</legend>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required maxlength="100" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" required maxlength="200" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Anything else? <span class="optional">optional</span></label>
+          <textarea id="message" name="message" rows="5" maxlength="5000"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" id="submit">Send</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
     </form>
   </main>
 
   <script>
-    // FormSubmit needs an absolute return URL; build it from wherever the site is served.
-    document.getElementById("next-url").value = new URL("contact.html?sent=1", location.href).href;
-    if (new URLSearchParams(location.search).has("sent")) {
-      document.getElementById("sent-notice").hidden = false;
+    const ENDPOINT = "https://formsubmit.co/ajax/ef03be3e642e9558048b4db071c0c7f4";
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    const button = document.getElementById("submit");
+    const loadedAt = Date.now();
+
+    function setStatus(text, kind) {
+      status.textContent = text;
+      status.dataset.kind = kind || "";
     }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.classList.add("show-errors");
+        form.querySelector("input:invalid, textarea:invalid").focus();
+        setStatus("Please fill in the highlighted fields.", "error");
+        return;
+      }
+
+      const data = Object.fromEntries(new FormData(form));
+
+      // Bots fill the hidden field or submit instantly; pretend it worked and drop it.
+      if (data._honey || Date.now() - loadedAt < 3000) {
+        form.reset();
+        setStatus("Thanks — your submission was sent.", "ok");
+        return;
+      }
+      delete data._honey;
+
+      data._subject = `Show submission: ${data.event_name}`;
+      data._template = "table";
+      data._replyto = data.email;
+
+      button.disabled = true;
+      setStatus("Sending…");
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(data)
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok || String(body.success) !== "true") {
+          throw new Error(body.message || `Server returned ${res.status}`);
+        }
+        form.reset();
+        form.classList.remove("show-errors");
+        setStatus("Thanks — your submission was sent.", "ok");
+      } catch (err) {
+        setStatus(`Couldn't send: ${err.message}`, "error");
+      } finally {
+        button.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
