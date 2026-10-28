@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · Pedal Show Calendar</title>
+  <meta name="description" content="Send a show listing, correction or question to Pedal Show Calendar.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="back"><a href="./">← All shows</a></p>
+    <h1>Contact</h1>
+    <p class="tagline">Know a show we're missing, or spotted a mistake? Let us know.</p>
+  </header>
+
+  <main>
+    <p class="notice" id="sent-notice" hidden>Thanks — your message was sent.</p>
+
+    <!-- Messages are relayed by FormSubmit (formsubmit.co), which adds a CAPTCHA
+         and its own spam filtering on top of the honeypot field below. -->
+    <form class="contact-form" action="https://formsubmit.co/919pedalparty@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Pedal Show Calendar contact form">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" id="next-url">
+
+      <!-- Honeypot: hidden from people, bots fill it in and get discarded. -->
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label>
+        Name
+        <input type="text" name="name" required maxlength="100" autocomplete="name">
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" required maxlength="200" autocomplete="email">
+      </label>
+
+      <label>
+        Message
+        <textarea name="message" required rows="6" maxlength="5000"
+          placeholder="Show name, dates, city, venue and a link are the most helpful."></textarea>
+      </label>
+
+      <button type="submit">Send message</button>
+    </form>
+  </main>
+
+  <script>
+    // FormSubmit needs an absolute return URL; build it from wherever the site is served.
+    document.getElementById("next-url").value = new URL("contact.html?sent=1", location.href).href;
+    if (new URLSearchParams(location.search).has("sent")) {
+      document.getElementById("sent-notice").hidden = false;
+    }
+  </script>
+</body>
+</html>
