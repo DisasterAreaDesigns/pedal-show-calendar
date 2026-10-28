@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedal Show Calendar</title>
+  <meta name="description" content="Upcoming guitar effects pedal shows, expos and meetups.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Pedal Show Calendar</h1>
+    <p class="tagline">Guitar effects shows, expos and meetups.</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search shows, cities, tags…" aria-label="Search shows">
+      <label class="toggle">
+        <input id="show-past" type="checkbox"> Show past events
+      </label>
+    </div>
+
+    <section id="upcoming" aria-labelledby="upcoming-heading">
+      <h2 id="upcoming-heading">Upcoming</h2>
+      <ol class="event-list" id="upcoming-list"></ol>
+    </section>
+
+    <section id="past" aria-labelledby="past-heading" hidden>
+      <h2 id="past-heading">Past</h2>
+      <ol class="event-list" id="past-list"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Know a show we're missing? Open a pull request adding it to <code>data/events.json</code>.</p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
