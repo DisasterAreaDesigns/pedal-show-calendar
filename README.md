@@ -29,8 +29,12 @@ Add an object to `data/events.json`:
 | `region`  | no       | State / province                       |
 | `country` | no       |                                        |
 | `url`     | no       | Official show page                     |
+| `image`   | no       | Path under `images/` or a full URL     |
+| `imageAlt`| no       | Alt text; defaults to the show name    |
 | `tags`    | no       | e.g. `["expo", "boutique"]`            |
 | `notes`   | no       | Not displayed yet                      |
+
+Images display as a 4:3 thumbnail (cropped to fill), so a landscape logo or flyer around 640×480 works well. Put image files in [`images/`](images/). If an image fails to load, the listing just shows without it.
 
 The entries currently in the file are placeholders.
 

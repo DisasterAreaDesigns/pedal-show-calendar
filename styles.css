@@ -71,6 +71,22 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: 
   border-radius: 10px;
 }
 
+.event.has-image { grid-template-columns: 64px 1fr 120px; }
+
+.event-image {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+@media (max-width: 520px) {
+  .event.has-image { grid-template-columns: 64px 1fr; }
+  .event-image { grid-column: 1 / -1; grid-row: 1; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+}
+
 .event.past { opacity: 0.6; }
 
 .date-badge { text-align: center; line-height: 1.1; }

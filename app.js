@@ -28,17 +28,30 @@ function renderEvent(ev, isPast) {
   const end = parseDate(ev.end || ev.start);
   const place = [ev.venue, ev.city, ev.region, ev.country].filter(Boolean).join(", ");
 
-  return el("li", { className: `event${isPast ? " past" : ""}` },
+  const item = el("li", { className: `event${isPast ? " past" : ""}${ev.image ? " has-image" : ""}` },
     el("div", { className: "date-badge" },
       el("span", { className: "month", textContent: start.toLocaleDateString(undefined, { month: "short" }) }),
       el("span", { className: "day", textContent: String(start.getDate()) })
     ),
-    el("div", {},
+    el("div", { className: "details" },
       el("h3", {}, ev.url ? el("a", { href: ev.url, target: "_blank", rel: "noopener", textContent: ev.name }) : ev.name),
       el("p", { className: "meta", textContent: `${formatRange(start, end)} · ${place}` }),
       el("ul", { className: "tags" }, ...(ev.tags || []).map(t => el("li", { textContent: t })))
     )
   );
+
+  if (ev.image) {
+    item.append(el("img", {
+      className: "event-image",
+      src: ev.image,
+      alt: ev.imageAlt || ev.name,
+      loading: "lazy",
+      // Drop the image slot if the file is missing rather than showing a broken icon.
+      onerror() { this.remove(); item.classList.remove("has-image"); }
+    }));
+  }
+
+  return item;
 }
 
 function matches(ev, q) {

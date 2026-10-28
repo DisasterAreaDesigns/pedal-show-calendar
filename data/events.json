@@ -9,6 +9,8 @@
     "country": "US",
     "venue": "Example Venue",
     "url": "https://example.com",
+    "image": "images/example-expo.svg",
+    "imageAlt": "Example Effects Expo logo",
     "tags": ["expo", "boutique"],
     "notes": "Placeholder entry — replace with a real show."
   },
