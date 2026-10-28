@@ -84,7 +84,7 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: 
 
 @media (max-width: 520px) {
   .event.has-image { grid-template-columns: 64px 1fr; }
-  .event-image { grid-column: 1 / -1; grid-row: 1; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .event-image { grid-column: 1 / -1; grid-row: 1; width: 100%; height: auto; }
 }
 
 .event.past { opacity: 0.6; }

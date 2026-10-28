@@ -1,43 +1,15 @@
 [
   {
-    "id": "example-expo-2027",
-    "name": "Example Effects Expo",
-    "start": "2027-03-13",
-    "end": "2027-03-14",
-    "city": "Brooklyn",
-    "region": "NY",
+    "id": "919-pedal-party-2027",
+    "name": "919 Pedal Party",
+    "start": "2027-09-18",
+    "end": "2027-09-18",
+    "city": "Carrboro",
+    "region": "NC",
     "country": "US",
-    "venue": "Example Venue",
-    "url": "https://example.com",
-    "image": "images/example-expo.svg",
-    "imageAlt": "Example Effects Expo logo",
-    "tags": ["expo", "boutique"],
-    "notes": "Placeholder entry — replace with a real show."
-  },
-  {
-    "id": "example-pedal-meetup-2027",
-    "name": "Example Pedal Meetup",
-    "start": "2027-05-22",
-    "end": "2027-05-22",
-    "city": "Austin",
-    "region": "TX",
-    "country": "US",
-    "venue": "Example Hall",
-    "url": "https://example.com",
-    "tags": ["meetup"],
-    "notes": "Placeholder entry — replace with a real show."
-  },
-  {
-    "id": "example-past-show-2026",
-    "name": "Example Past Show",
-    "start": "2026-06-06",
-    "end": "2026-06-07",
-    "city": "London",
-    "region": "",
-    "country": "UK",
-    "venue": "Example Centre",
-    "url": "https://example.com",
-    "tags": ["expo"],
-    "notes": "Placeholder entry — shows how past events render."
+    "image": "images/919-pedal-party-2027.webp",
+    "imageAlt": "919 Pedal Party flyer from Twin House Music and Alexander Pedals",
+    "tags": ["pedal party"],
+    "notes": "Hosted by Twin House Music and Alexander Pedals."
   }
 ]

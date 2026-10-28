@@ -35,9 +35,6 @@ Add an object to `data/events.json`:
 | `notes`   | no       | Not displayed yet                      |
 
 Images display as a 4:3 thumbnail (cropped to fill), so a landscape logo or flyer around 640×480 works well. Put image files in [`images/`](images/). If an image fails to load, the listing just shows without it.
-
-The entries currently in the file are placeholders.
-
 ## Deploying
 
 Any static host works. For GitHub Pages: push to GitHub, then Settings → Pages → deploy from the `main` branch root.
