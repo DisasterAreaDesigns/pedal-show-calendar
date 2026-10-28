@@ -105,7 +105,7 @@
     "region": "NJ",
     "country": "US",
     "url": "https://relicmusicshop.com/",
-    "tags": ["shop event"],
+    "tags": ["shop event", "free"],
     "notes": "Pedal, amp and guitar brands, plus a free after-hours show."
   },
   {
@@ -131,7 +131,7 @@
     "region": "NC",
     "country": "US",
     "url": "https://919pedalparty.com/",
-    "tags": ["meetup"],
+    "tags": ["meetup", "free"],
     "notes": "Presented by Alexander Pedals and Twin House Music."
   },
   {
@@ -183,7 +183,7 @@
     "region": "VA",
     "country": "US",
     "url": "https://www.boredbrainmusic.com/event/emixx-2026-9/register",
-    "tags": ["expo", "synths", "workshops"],
+    "tags": ["expo", "synths", "workshops", "free"],
     "notes": "Synth and pedal meetup with DIY workshops by Alexander Pedals and Boredbrain Music."
   }
 ]
