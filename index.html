@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pedal Show Calendar</title>
   <meta name="description" content="Upcoming guitar effects pedal shows, expos and meetups.">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <header class="site-header">
@@ -20,6 +20,47 @@
         <input id="show-past" type="checkbox"> Show past events
       </label>
     </div>
+
+    <details class="legend">
+      <summary>What the tags mean</summary>
+      <div class="legend-groups">
+        <div>
+          <h3>Type of event</h3>
+          <dl>
+            <dt><button type="button" data-tag="expo">expo</button></dt>
+            <dd>Larger show that covers more than pedals, such as synths, guitars or amps, with many exhibitors to try gear from.</dd>
+            <dt><button type="button" data-tag="meetup">meetup</button></dt>
+            <dd>Smaller local get-together of builders and players, often at a bar or brewery.</dd>
+            <dt><button type="button" data-tag="shop event">shop event</button></dt>
+            <dd>Hosted by a music store, with builder demos on site.</dd>
+            <dt><button type="button" data-tag="trade show">trade show</button></dt>
+            <dd>Industry event for dealers, press and builders.</dd>
+          </dl>
+        </div>
+        <div>
+          <h3>Good to know</h3>
+          <dl>
+            <dt><button type="button" data-tag="free">free</button></dt>
+            <dd>No admission charge. Shows without this tag charge for entry.</dd>
+            <dt><button type="button" data-tag="industry only">industry only</button></dt>
+            <dd>Not open to the public. You need a trade badge, such as a NAMM badge, to get in.</dd>
+            <dt><button type="button" data-tag="synths">synths</button></dt>
+            <dd>Synths and modular gear as well as pedals.</dd>
+            <dt><button type="button" data-tag="guitars">guitars</button></dt>
+            <dd>Guitars and amps as well as pedals.</dd>
+            <dt><button type="button" data-tag="workshops">workshops</button></dt>
+            <dd>Hands-on sessions, such as DIY builds.</dd>
+            <dt><button type="button" data-tag="21+">21+</button></dt>
+            <dd>Adults only. Shows without this tag are all ages.</dd>
+            <dt><button type="button" data-tag="multi-day">multi-day</button></dt>
+            <dd>Runs for more than one day.</dd>
+            <dt><button type="button" data-tag="international">international</button></dt>
+            <dd>Held outside the US.</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="legend-hint">Tap a tag to show only those events.</p>
+    </details>
 
     <section id="upcoming" aria-labelledby="upcoming-heading">
       <h2 id="upcoming-heading">Upcoming</h2>
@@ -36,6 +77,6 @@
     <p>Know a show we're missing? <a href="contact.html">Get in touch</a>, or open a pull request adding it to <code>data/events.json</code>.</p>
   </footer>
 
-  <script src="app.js?v=3" type="module"></script>
+  <script src="app.js?v=4" type="module"></script>
 </body>
 </html>

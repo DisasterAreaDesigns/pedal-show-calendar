@@ -107,6 +107,35 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
 .tags li { font-size: 0.75rem; padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); }
 
+.tags li.free { border-color: var(--ok); color: var(--ok); }
+
+.legend {
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.legend summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+.legend-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
+@media (max-width: 520px) { .legend-groups { grid-template-columns: 1fr; } }
+.legend h3 { margin: 0 0 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.legend dl { margin: 0; display: grid; gap: 4px; }
+.legend dd { margin: 0 0 8px; font-size: 0.85rem; }
+.legend dt button {
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.legend dt button:hover { border-color: var(--accent); color: var(--accent); }
+.legend dt button[data-tag="free"] { border-color: var(--ok); color: var(--ok); }
+.legend-hint { margin: 4px 0 0; font-size: 0.8rem; color: var(--muted); }
+
 .empty { color: var(--muted); }
 
 .site-footer { padding-bottom: 48px; color: var(--muted); font-size: 0.9rem; }

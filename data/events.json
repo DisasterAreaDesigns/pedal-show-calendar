@@ -1,5 +1,87 @@
 [
   {
+    "id": "brooklyn-synth-pedal-expo-2027",
+    "name": "Brooklyn Synth and Pedal Expo",
+    "start": "2027-10-16",
+    "end": "2027-10-17",
+    "city": "Brooklyn",
+    "region": "NY",
+    "country": "US",
+    "url": "https://delicious-audio.com/upcoming-synth-pedal-expos/",
+    "tags": ["expo", "synths", "multi-day"],
+    "notes": "Presented by Delicious Audio with Three Wave Music and Tonewolf."
+  },
+  {
+    "id": "montreal-synth-pedal-expo-2027",
+    "name": "Montreal Synth and Pedal Expo",
+    "start": "2027-08-28",
+    "end": "2027-08-29",
+    "city": "Montreal",
+    "region": "QC",
+    "country": "CA",
+    "url": "https://delicious-audio.com/upcoming-synth-pedal-expos/",
+    "tags": ["expo", "synths", "multi-day", "international"],
+    "notes": "Presented by Delicious Audio with Moog Audio."
+  },
+  {
+    "id": "los-angeles-synth-pedal-expo-2027",
+    "name": "Los Angeles Synth and Pedal Expo",
+    "start": "2027-06-05",
+    "end": "2027-06-06",
+    "city": "Los Angeles",
+    "region": "CA",
+    "country": "US",
+    "url": "https://delicious-audio.com/upcoming-synth-pedal-expos/",
+    "tags": ["expo", "synths", "multi-day"],
+    "notes": "Presented by Delicious Audio with The Midium and Truetone Music."
+  },
+  {
+    "id": "london-synth-pedal-expo-2027",
+    "name": "London Synth and Pedal Expo",
+    "start": "2027-04-03",
+    "end": "2027-04-04",
+    "city": "London",
+    "country": "UK",
+    "url": "https://delicious-audio.com/upcoming-synth-pedal-expos/",
+    "tags": ["expo", "synths", "multi-day", "international"],
+    "notes": "Presented by Delicious Audio with KMR Music."
+  },
+  {
+    "id": "portland-synth-pedal-expo-2027",
+    "name": "Portland Synth and Pedal Expo",
+    "start": "2027-03-20",
+    "end": "2027-03-21",
+    "city": "Portland",
+    "region": "OR",
+    "country": "US",
+    "url": "https://delicious-audio.com/upcoming-synth-pedal-expos/",
+    "tags": ["expo", "synths", "multi-day"],
+    "notes": "Presented by Delicious Audio with Control Voltage and Hank's Music Exchange."
+  },
+  {
+    "id": "wood-wire-volts-2027",
+    "name": "Wood Wire Volts",
+    "start": "2027-01-28",
+    "end": "2027-01-30",
+    "venue": "The Colony House, 401 N. Anaheim Blvd.",
+    "city": "Anaheim",
+    "region": "CA",
+    "country": "US",
+    "tags": ["expo", "guitars", "multi-day"]
+  },
+  {
+    "id": "namm-stompbox-booth-2027",
+    "name": "NAMM Stompbox Booth",
+    "start": "2027-01-28",
+    "end": "2027-01-30",
+    "venue": "Anaheim Convention Center",
+    "city": "Anaheim",
+    "region": "CA",
+    "country": "US",
+    "tags": ["trade show", "industry only", "multi-day"],
+    "notes": "Requires a NAMM badge; not open to the public."
+  },
+  {
     "id": "919-pedal-party-2027",
     "name": "919 Pedal Party",
     "start": "2027-09-18",
@@ -10,7 +92,7 @@
     "url": "https://919pedalparty.com/",
     "image": "images/919-pedal-party-2027.webp",
     "imageAlt": "919 Pedal Party flyer from Twin House Music and Alexander Pedals",
-    "tags": ["pedal party"],
+    "tags": ["meetup", "free"],
     "notes": "Hosted by Twin House Music and Alexander Pedals."
   },
   {
@@ -36,7 +118,7 @@
     "region": "NY",
     "country": "US",
     "url": "https://synthandpedalexpo.com/brooklyn-synth-pedal-expo/",
-    "tags": ["expo", "synths"],
+    "tags": ["expo", "synths", "multi-day"],
     "notes": "Presented by Delicious Audio with Three Wave Music. Silent show — demos through headphones."
   },
   {
@@ -49,7 +131,7 @@
     "region": "NC",
     "country": "US",
     "url": "https://919pedalparty.com/",
-    "tags": ["pedal party"],
+    "tags": ["meetup"],
     "notes": "Presented by Alexander Pedals and Twin House Music."
   },
   {
@@ -62,7 +144,7 @@
     "region": "MD",
     "country": "US",
     "url": "https://baltimorepedalshow.com/",
-    "tags": ["pedal show", "free"],
+    "tags": ["meetup", "free"],
     "notes": "Free event for Baltimore-area musicians to meet effects pedal builders."
   },
   {
@@ -75,7 +157,7 @@
     "region": "OR",
     "country": "US",
     "url": "https://delicious-audio.com/the-portland-synth-and-pedal-expo/",
-    "tags": ["expo", "synths"],
+    "tags": ["expo", "synths", "multi-day"],
     "notes": "Presented by Delicious Audio with Hank's Music Exchange and Control Voltage. Silent show — demos through headphones."
   },
   {
@@ -88,7 +170,7 @@
     "region": "VA",
     "country": "US",
     "url": "https://www.effectiveslam.com/",
-    "tags": ["expo", "free", "all ages"],
+    "tags": ["meetup", "free"],
     "notes": "Hosted by Lantern Manufacturing."
   },
   {

@@ -36,7 +36,7 @@ function renderEvent(ev, isPast) {
     el("div", { className: "details" },
       el("h3", {}, ev.url ? el("a", { href: ev.url, target: "_blank", rel: "noopener", textContent: ev.name }) : ev.name),
       el("p", { className: "meta", textContent: `${formatRange(start, end)} · ${place}` }),
-      el("ul", { className: "tags" }, ...(ev.tags || []).map(t => el("li", { textContent: t })))
+      el("ul", { className: "tags" }, ...(ev.tags || []).map(t => el("li", { textContent: t, className: t === "free" ? "free" : "" })))
     )
   );
 
@@ -91,4 +91,11 @@ const events = await res.json();
 
 searchInput.addEventListener("input", () => render(events));
 showPast.addEventListener("change", () => render(events));
+document.querySelectorAll(".legend [data-tag]").forEach(btn =>
+  btn.addEventListener("click", () => {
+    searchInput.value = btn.dataset.tag;
+    render(events);
+    searchInput.scrollIntoView({ behavior: "smooth", block: "start" });
+  })
+);
 render(events);
